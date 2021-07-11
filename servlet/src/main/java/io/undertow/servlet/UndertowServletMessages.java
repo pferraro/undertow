@@ -235,4 +235,10 @@ public interface UndertowServletMessages {
 
     @Message(id = 10063, value = "Path %s must start with a / to get the request dispatcher")
     IllegalArgumentException pathMustStartWithSlashForRequestDispatcher(String path);
+
+    @Message(id = 10064, value = "Servlet container does not permit session creation after reponse was committed.")
+    IllegalStateException sessionCreationAfterResponseCommittedNotAllowed();
+
+    @Message(id = 10065, value = "Servlet container does not permit session identifier change after reponse was committed.")
+    IllegalStateException sessionIdChangeAfterResponseCommittedNotAllowed();
 }

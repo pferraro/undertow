@@ -121,6 +121,7 @@ public class DeploymentInfo implements Cloneable {
     private boolean sendCustomReasonPhraseOnError = false;
     private boolean useCachedAuthenticationMechanism = true;
     private boolean preservePathOnForward = true;
+    private boolean allowOrphanSession = false;
     private AuthenticationMode authenticationMode = AuthenticationMode.PRO_ACTIVE;
     private ExceptionHandler exceptionHandler;
     private final Map<String, ServletInfo> servlets = new HashMap<>();
@@ -1416,6 +1417,14 @@ public class DeploymentInfo implements Cloneable {
         return deploymentCompleteListeners;
     }
 
+    public boolean isOrphanSessionAllowed() {
+        return this.allowOrphanSession;
+    }
+
+    public void setOrphanSessionAllowed(boolean allowOrphanSession) {
+        this.allowOrphanSession = allowOrphanSession;
+    }
+
     @Override
     public DeploymentInfo clone() {
         final DeploymentInfo info = new DeploymentInfo()
@@ -1512,6 +1521,7 @@ public class DeploymentInfo implements Cloneable {
         info.containerMinorVersion = containerMinorVersion;
         info.deploymentCompleteListeners.addAll(deploymentCompleteListeners);
         info.preservePathOnForward = preservePathOnForward;
+        info.allowOrphanSession = allowOrphanSession;
         return info;
     }
 
